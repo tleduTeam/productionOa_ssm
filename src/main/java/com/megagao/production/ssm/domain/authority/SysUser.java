@@ -3,24 +3,24 @@ package com.megagao.production.ssm.domain.authority;
 import javax.validation.constraints.Size;
 
 public class SysUser {
-	
-	@Size(max=36, message="用户编号过长！")
+
+	@Size(max = 36, message = "用户编号过长！")
 	private String id;
 
-	@Size(max=64, message="用户名过长！")
-    private String username;
+	@Size(max = 64, message = "用户名过长！")
+	private String username;
 
-	@Size(max=32, message="密码过长！")
-    private String password;
-    
-	@Size(max=1, message="用户状态输入非法！")
-    private String locked;
-    
-	@Size(max=128, message="角色名过长！")
-    private String roleName;
-    
-	@Size(max=36, message="角色编号非法！")
-    private String roleId;
+	@Size(max = 32, message = "密码过长！")
+	private String password;
+
+	@Size(max = 1, message = "用户状态输入非法！")
+	private String locked;
+
+	@Size(max = 128, message = "角色名过长！")
+	private String roleName;
+
+	@Size(max = 36, message = "角色编号非法！")
+	private String roleId;
 
 	public String getId() {
 		return id;
@@ -68,6 +68,22 @@ public class SysUser {
 
 	public void setRoleId(String roleId) {
 		this.roleId = roleId;
+	}
+
+	@Override
+	public String toString() {
+		return "SysUser [id=" + id + ", username=" + username + ", password="
+				+ password + ", locked=" + locked + ", roleName=" + roleName
+				+ ", roleId=" + roleId + "]";
+	}
+
+	public SysUser() {
+		super();
+	}
+
+	public SysUser(String username) {
+		super();
+		this.username = username;
 	}
 
 }

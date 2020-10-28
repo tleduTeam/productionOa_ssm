@@ -179,6 +179,12 @@
 						<ul>
 							<li data-options="attributes:{'url':'role/find'}">角色管理</li>
 						</ul>
+						<ul>
+							<li data-options="attributes:{'url':'loginLog/find'}">登录日志</li>
+						</ul>
+						<ul>
+							<li data-options="attributes:{'url':'operationLog/find'}">操作日志</li>
+						</ul>
 					</li>
 				</ul>
 			</div>

@@ -7,35 +7,38 @@ import com.megagao.production.ssm.domain.authority.SysUserExample;
 import com.megagao.production.ssm.domain.authority.SysUser;
 
 public interface SysUserMapper {
-	//扩展的mapper接口方法
+	// 扩展的mapper接口方法
 	List<SysUser> find(SysUser record);
-	
+
 	int deleteBatch(String[] ids);
-	
+
 	int changeStatus(String[] ids);
-	
-	
-    int countByExample(SysUserExample example);
 
-    int deleteByExample(SysUserExample example);
+	SysUser loadByUsername(String username);
 
-    int deleteByPrimaryKey(String id);
+	int countByExample(SysUserExample example);
 
-    int insert(SysUser user);
+	int deleteByExample(SysUserExample example);
 
-    int insertSelective(SysUser user);
+	int deleteByPrimaryKey(String id);
 
-    List<SysUser> selectByExample(SysUserExample example);
+	int insert(SysUser user);
 
-    SysUser selectByPrimaryKey(String id);
+	int insertSelective(SysUser user);
 
-    int updateByExampleSelective(@Param("record") SysUser record, @Param("example") SysUserExample example);
+	List<SysUser> selectByExample(SysUserExample example);
 
-    int updateByExample(@Param("record") SysUser record, @Param("example") SysUserExample example);
+	SysUser selectByPrimaryKey(String id);
 
-    int updateByPrimaryKeySelective(SysUser user);
+	int updateByExampleSelective(@Param("record") SysUser record,
+			@Param("example") SysUserExample example);
 
-    int updateByPrimaryKey(SysUser user);
+	int updateByExample(@Param("record") SysUser record,
+			@Param("example") SysUserExample example);
+
+	int updateByPrimaryKeySelective(SysUser user);
+
+	int updateByPrimaryKey(SysUser user);
 
 	List<SysUser> searchUserByUserId(String userId);
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.megagao.production.ssm.mapper.authority.SysLoginLogMapper">
+	<!-- <delete id="deleteByPrimaryKey" parameterType="string"> delete from 
+		t_branch where id=#{branchId} </delete> -->
+
+	<insert id="insert" parameterType="LoginLog">
+		insert into t_loginLog
+		(id,come_time,ip,user_id,username) values
+		(#{id},#{come_time},#{ip},#{sysUser.id},#{username})
+	</insert>
+
+
+	<select id="find" resultType="loginLog">
+		select * from t_loginlog
+	</select>
+
+	<select id="searchLoginLogById" resultType="LoginLog"
+		parameterType="string">
+		select * from t_loginlog where id like
+		CONCAT('%',#{id},'%')
+	</select>
+
+	<select id="searchLoginLogByName" resultType="LoginLog"
+		parameterType="string">
+		select * from t_loginlog where username like
+		CONCAT('%',#{name},'%' )
+	</select>
+
+	<!-- 批量删除 -->
+	<delete id="deleteBatch">
+		DELETE FROM t_loginlog WHERE id IN
+		<foreach collection="array" item="id" open="(" close=")"
+			separator=",">
+			#{id}
+		</foreach>
+	</delete>
+
+	<delete id="deleteByLoginLogId" parameterType="java.lang.String">
+		delete from
+		t_loginlog
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+
+</mapper>
