@@ -10,9 +10,7 @@ import com.megagao.production.ssm.mapper.COrderMapper;
 import com.megagao.production.ssm.service.CustomService;
 import com.megagao.production.ssm.service.OrderService;
 import com.megagao.production.ssm.service.ProductService;
-import com.megagao.production.ssm.util.Log;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +30,6 @@ public class OrderServiceImpl implements OrderService {
     ProductService productService;
 	
 	@Override
-	@Log(title = "ceshi", action = "测试数据")
 	public List<COrderVO> find() throws Exception{
 		COrderExample example = new COrderExample();
 		return cOrderMapper.selectByExample(example);

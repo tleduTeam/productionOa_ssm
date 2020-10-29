@@ -12,7 +12,6 @@ import com.megagao.production.ssm.mapper.authority.SysUserMapper;
 import com.megagao.production.ssm.mapper.authority.SysUserRoleMapper;
 import com.megagao.production.ssm.service.UserService;
 import com.megagao.production.ssm.util.IDUtils;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -200,10 +199,5 @@ public class UserServiceImpl implements UserService {
 		PageInfo<SysUser> pageInfo = new PageInfo<>(list);
 		result.setTotal(pageInfo.getTotal());
 		return result;
-	}
-
-	@Override
-	public SysUser loadByUserName(String username) {
-		return sysUserMapper.loadByUsername(username);
 	}
 }

@@ -100,6 +100,8 @@ public class RoleController {
 		}
 		if(roleService.findByRoleNameAndId(role.getRoleName(), role.getRoleId()).size()>0){
 			result = new CustomResult(0, "该角色名已经存在，请更换角色名！", null);
+		}else if(roleService.get(role.getRoleId()) != null){
+			result = new CustomResult(0, "该角色编号已经存在，请更换角色编号！", null);
 		}else{
 			result = roleService.updateAll(role);
 		}

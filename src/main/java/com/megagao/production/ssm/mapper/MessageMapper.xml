@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.megagao.production.ssm.mapper.MessageMapper" >
+
+	<insert id="insert" parameterType="Message">
+		insert into t_message (id,title,content,messageType_id,user_id,record_time) 
+		values (#{id},#{title},#{content},#{messageType_id},#{user_id},#{record_time})
+	</insert>
+	<update id="update" parameterType="Message">
+		update t_message set title=#{title},content=#{content},messageType_id=#{messageType_id},user_id=#{user_id},
+		record_time=#{record_time}
+		 where id = #{id}
+	</update>
+	<delete id="deleteByPrimaryKey" parameterType="string">
+		delete from t_message where id=#{messageId}
+	</delete>
+	<!-- 批量删除 -->
+	<delete id="deleteBatch">
+		DELETE
+		FROM
+		t_message
+		WHERE
+		id IN
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+	<select id="find" resultType="Message">
+		select  
+		t_message.id,
+		title,
+		content,
+		record_time,
+		user_id,
+		type
+		from t_message inner join t_messagetype on messageType_id = t_messagetype.id
+	</select>
+	<select id="searchMessageById" resultType="Message" parameterType="string">
+		select * from t_message where id like CONCAT('%',#{id},'%')
+	</select>
+	<select id="searchMessageByTitle" resultType="Message" parameterType="string">
+		select * from t_message where short_name like CONCAT('%',#{short_name},'%' )  
+	</select>
+
+	<select id="selectByPrimaryKey" resultType="com.megagao.production.ssm.domain.Message" parameterType="string">
+		select * from t_message where id=#{id}
+	</select>
+</mapper>

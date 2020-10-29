@@ -12,8 +12,6 @@ public interface UserService {
 
 	SysUser get(String string) throws Exception;
 	
-	SysUser loadByUserName(String username);
-	
 	List<SysUser> findByUserNameAndId(String username, String id) throws Exception;
 	
 	CustomResult delete(String string) throws Exception;
