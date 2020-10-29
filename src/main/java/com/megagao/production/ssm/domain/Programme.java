@@ -107,7 +107,6 @@ public class Programme {
         this.create_date = create_date;
     }
 
-
-
-
+    public Programme() {
+    }
 }
