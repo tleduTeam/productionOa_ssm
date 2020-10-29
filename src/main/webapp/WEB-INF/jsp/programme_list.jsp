@@ -12,15 +12,15 @@
 		<th data-options="field:'id',align:'center',width:100">日程编号</th>
 		<th data-options="field:'title',align:'center',width:100">日程标题</th>
 		<th data-options="field:'address',align:'center',width:100">会议地址</th>
+		<th data-options="field:'meeting.type',align:'center',width:100,formatter:ooo">会议类型</th>
 		<th data-options="field:'begin_time',align:'center',width:100">会议开始时间</th>
 		<th data-options="field:'end_time',align:'center',width:100">会议结束时间</th>
 		<th data-options="field:'content',align:'center',width:100">会议内容</th>
-		<th data-options="field:'user_id',align:'center',width:100">创建者</th>
+		<th data-options="field:'user.username',align:'center',width:100,formatter:username">创建者</th>
 		<th data-options="field:'create_date',align:'center',width:100">创建时间</th>
 	</tr>
 	</thead>
 </table>
-
 <div  id="toolbar_programme" style=" height: 22px; padding: 3px 11px; background: #fafafa;">
 
 	<c:forEach items="${sessionScope.sysPermissionList}" var="per" >
@@ -71,6 +71,7 @@
 
 <script>
 
+
 	function doSearch_programme(value,name){ //用户输入用户名,点击搜素,触发此函数
 		if(value == null || value == ''){
 			$("#programmeList").datagrid({
@@ -82,6 +83,7 @@
 					{field : 'id', width : 100, align:'center', title : '日程编号'},
 					{field : 'title', width : 100, align:'center', title : '日程标题'},
 					{field : 'address', width : 100, align:'center', title : '会议地址'},
+					{field : 'meeting', width : 100, align:'center', title : '会议类型'},
 					{field : 'begin_time', width : 100, align:'center', title : '会议开始时间'},
 					{field : 'end_time', width : 100, align:'center', title : '会议结束时间'},
 					{field : 'content', width : 100, align:'center', title : '会议内容'},
@@ -99,6 +101,7 @@
 					{field : 'id', width : 100, align:'center', title : '日程编号'},
 					{field : 'title', width : 100, align:'center', title : '日程标题'},
 					{field : 'address', width : 100, align:'center', title : '会议地址'},
+					{field : 'meeting', width : 100, align:'center', title : '会议类型'},
 					{field : 'begin_time', width : 100, align:'center', title : '会议开始时间'},
 					{field : 'end_time', width : 100, align:'center', title : '会议结束时间'},
 					{field : 'content', width : 100, align:'center', title : '会议内容'},
@@ -116,7 +119,16 @@
 		return rows[index];
 
 	}
+	function ooo(value, row, index){
+		// console.log(row);
+		return row.meeting.type;
 
+	}
+	function username(value, row, index){
+			// console.log(row.user);
+			return row.user.username;
+
+	}
 
 	function getProgrammeSelectionsIds(){
 		var programmeList = $("#programmeList");
@@ -197,4 +209,7 @@
 	function programme_reload(){
 		$("#programmeList").datagrid("reload");
 	}
+
+
+
 </script>

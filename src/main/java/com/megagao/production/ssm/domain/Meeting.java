@@ -27,4 +27,12 @@ public class Meeting {
     }
 
     public Meeting() {}
+
+    @Override
+    public String toString() {
+        return "Meeting{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

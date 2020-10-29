@@ -151,7 +151,7 @@
 					<li id=61 data-options="attributes:{'url':'department/find'}">部门管理</li>
 				</ul>
 				<ul>
-					<li id=62 data-options="attributes:{'url':'employee/find'}">员工管理</li>
+					<li id=62 data-options="attributes:{'url':'mynote/find'}">员工管理</li>
 				</ul>
 			</li>
 		</ul>
@@ -174,9 +174,7 @@
 				<ul>
 					<li id=64 data-options="attributes:{'url':'programme/find'}">我的日程</li>
 				</ul>
-				<ul>
-					<li id=65 data-options="attributes:{'url':'programme/find'}">我的便签</li>
-				</ul>
+
 			</li>
 		</ul>
 	</div>
