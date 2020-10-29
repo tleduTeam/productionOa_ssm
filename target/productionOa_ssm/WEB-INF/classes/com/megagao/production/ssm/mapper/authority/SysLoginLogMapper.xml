@@ -12,7 +12,7 @@
 
 
 	<select id="find" resultType="loginLog">
-		select * from t_loginlog
+		select * from t_loginlog ORDER BY come_time DESC
 	</select>
 
 	<select id="searchLoginLogById" resultType="LoginLog"
