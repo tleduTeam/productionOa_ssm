@@ -34,6 +34,7 @@ import com.megagao.production.ssm.util.CollectionsFactory;
 @Controller
 public class LoginController {
 
+	
 	@Autowired
 	private UserService userService;
 
@@ -97,6 +98,7 @@ public class LoginController {
 		SysUser sysUser2 = new SysUser(username);
 		session.setAttribute("sysUser2", sysUser2);
 
+		System.out.println("55555");
 		// 返回json数据
 		return map;
 	}
