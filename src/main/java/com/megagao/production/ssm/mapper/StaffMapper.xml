@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.megagao.production.ssm.mapper.StaffMapper" >
+
+	<select id="find" resultType="Staff">
+		select ts.*,td.name as name1,sr.role_name from t_staff as ts inner join t_dept as td on ts.dept_id=td.id inner join sys_role as sr on ts.role_id=sr.role_id
+	</select>
+	
+	<select id="searchStaffById" resultType="Staff" parameterType="int">
+		select * from t_dept where id like CONCAT('%',#{id},'%')
+	</select>
+	<insert id="insert" parameterType="Staff">
+		insert into t_staff (id,name,password,sex,status,dept_id,role_id) values (#{id},#{name},#{password},#{sex},#{status},#{dept_id},#{role_id})
+	</insert>
+	
+	<select id="selectByPrimaryKey" resultType="com.megagao.production.ssm.domain.Staff" parameterType="int">
+		select * from t_dept where id=#{id}
+	</select>
+	
+	<update id="update" parameterType="Staff">
+		update t_staff set name=#{name},sex=#{sex},status=#{status},dept_id=#{dept_id},role_id=#{role_id} where id = #{id}
+	</update>
+	
+	<delete id="deleteByPrimaryKey" parameterType="string">
+		delete from t_staff where id=#{id}
+	</delete>
+	<!-- 批量删除 -->
+	<delete id="deleteBatch">
+		DELETE
+		FROM
+		t_staff
+		WHERE
+		id IN
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+	
+	<!-- 修改状态，批量启用停用-->
+	<update id="changeStatus">
+		UPDATE t_staff
+		SET status = #{status}
+		WHERE
+			id IN
+		<foreach collection="ids" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</update>
+	
+</mapper>

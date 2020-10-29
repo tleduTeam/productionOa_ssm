@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.megagao.production.ssm.mapper.DeptMapper" >
+
+	<select id="find" resultType="Dept">
+	select a.* ,b.name as name1,c.username FROM t_dept AS a INNER JOIN t_branch AS b ON a.branch_id=b.id INNER JOIN sys_user AS c ON a.user_id=c.id
+	</select>
+	
+	<select id="searchDeptById" resultType="Dept" parameterType="int">
+		select * from t_dept where id like CONCAT('%',#{id},'%')
+	</select>
+	
+	<select id="searchDeptByName" resultType="Dept" parameterType="int">
+		select * from t_dept where name like CONCAT('%',#{name},'%' ) 
+	</select>
+	
+	<select id="selectByPrimaryKey" resultType="com.megagao.production.ssm.domain.Dept" parameterType="int">
+		select * from t_dept where id=#{id}
+	</select>
+	
+	<insert id="insert" parameterType="Dept">
+		insert into t_dept (id,name,phone,tel,user_id,branch_id) values (#{id},#{name},#{phone},#{tel},#{user_id},#{branch_id})
+	</insert>
+	
+	<update id="update" parameterType="Dept">
+		update t_dept set name=#{name},phone=#{phone},tel=#{tel},user_id=#{user_id},branch_id=#{branch_id} where id = #{id}
+	</update>
+	
+	<delete id="deleteByPrimaryKey" parameterType="string">
+		delete from t_dept where id=#{id}
+	</delete>
+	<!-- 批量删除 -->
+	<delete id="deleteBatch">
+		DELETE
+		FROM
+		t_dept
+		WHERE
+		id IN
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+</mapper>
