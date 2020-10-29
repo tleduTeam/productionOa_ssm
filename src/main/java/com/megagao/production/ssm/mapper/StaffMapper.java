@@ -20,4 +20,5 @@ public interface StaffMapper {
 	
 	int changeStatus(String[] ids);
 
+    List<Staff> searchStaffById(int id);
 }

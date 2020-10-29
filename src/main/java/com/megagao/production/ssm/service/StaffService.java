@@ -11,19 +11,19 @@ public interface StaffService {
 	public List<Staff> find();
 
 	EUDataGridResult getList(int page, int rows) throws Exception;
-	
-	EUDataGridResult searchDeptById(int page, int rows, int id)
+
+	EUDataGridResult searchStaffById(int page, int rows, int id)
 			throws Exception;
 
 	CustomResult insert(Staff staff) throws Exception;
-	
+
 	Staff get(int id)throws Exception;
-	
+
 	CustomResult updateAll(Staff staff);
-	
+
 	CustomResult deleteBatch(int[] ids);
 
 	CustomResult delete(int id);
-	
+
 	CustomResult changeStatus(String[] ids) throws Exception;
 }

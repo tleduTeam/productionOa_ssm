@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.megagao.production.ssm.domain.Branch;
 import com.megagao.production.ssm.domain.Dept;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -40,7 +39,7 @@ public class DeptServiceImpl implements DeptService{
 	}
 
 	@Override
-	public EUDataGridResult searchDeptById(int page, int rows, int id)
+	public EUDataGridResult searchDeptById(int page, int rows, String id)
 			throws Exception {
 		PageHelper.startPage(page, rows);
 		List<Dept> list = deptMapper.searchDeptById(id);
@@ -52,6 +51,7 @@ public class DeptServiceImpl implements DeptService{
 		result.setTotal(pageInfo.getTotal());
 		return result;
 	}
+
 
 	@Override
 	public CustomResult insert(Dept dept) throws Exception {
