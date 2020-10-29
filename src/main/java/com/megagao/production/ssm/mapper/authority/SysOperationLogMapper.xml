@@ -18,7 +18,7 @@
 	</insert>
 
 	<select id="find" resultType="SysOperationLog">
-		select * from t_operationLog
+		select * from t_operationLog ORDER BY come_time DESC
 	</select>
 
 	<select id="searchSysOperationLogById" resultType="SysOperationLog"
